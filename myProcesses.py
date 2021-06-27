@@ -1,6 +1,6 @@
 import psutil, os, re, subprocess
 
-##Kill tasks
+## Kill tasks
 def killTasks(procnames):
     try:
         for proc in psutil.process_iter():
@@ -9,7 +9,8 @@ def killTasks(procnames):
                 name = proc.as_dict(attrs=['name'])['name']
                 subprocess.call(['sudo', 'kill', '-15', pid])
 
-        kodiproc = ['kodi', 'kodi.bin'] #Kodi needs SIGKILL -9 to close
+        # Kodi needs SIGKILL -9 to close
+        kodiproc = ['kodi', 'kodi.bin']
         for proc in psutil.process_iter():
             if proc.name() in kodiproc:
                 pid = str(proc.as_dict(attrs=['pid'])['pid'])
@@ -19,14 +20,14 @@ def killTasks(procnames):
     except:
         pass
 
-##Get emulator path
+## Get emulator path
 def getEmulatorPath(console):
     path = 'opt/retropie/supplementary/runcommand/runcommand.sh 0 _SYS_ ' + console + ' '
     return path
 
-##Get game path
+## Get game path
 def getGamePath(console, game):
-    #Escape the spaces and brackets in game filenames
+    # Escape the spaces and brackets in game filenames
     game = game.replace(" ", "\ ")
     game = game.replace("(", "\(")
     game = game.replace(")", "\)")
@@ -69,23 +70,16 @@ def process_id(proc_name):
     except:
         return 0
 
-##Run game
+## Run game
 def runGame(console, game, source):
-    print ('1')
     try:
-        #Update status
+        # Update status
         f = open('/home/pi/scripts/myControl/myConfigs/status.conf', 'rw+')
-        print ('1a')
         f.seek(0)
-        print ('1b')
         f.truncate()
-        print ('1c')
         f.seek(0)
-        print ('1d')
         f.write(source)
-        print ('1e')
         f.close()
-        print ('2')
         emulationstationRunning = processes_exists('emulationstation')
 
         procnames = ["retroarch", "ags", "uae4all2", "uae4arm", "capricerpi", "linapple", "hatari", "stella",
@@ -96,12 +90,9 @@ def runGame(console, game, source):
                     "cannonball", "tyrquake", "ioquake3", "residualvm", "xrick", "sdlpop", "uqm", "stratagus",
                     "wolf4sdl", "solarus", "emulationstation"]
 
-        print ('3')
         killTasks(procnames)
 
-        print ('4')
         pid = os.fork()
-        print ('5')
         if not pid:
             try:
                 if ((emulationstationRunning == False and source == '') or console == ''):
@@ -110,7 +101,6 @@ def runGame(console, game, source):
                     subprocess.call(getEmulatorPath(console) + getGamePath(console,game), shell=True)
             except:
                 pass
-            print ('6')
             os.exit(0)
         else:
             response = {'type':'success', 'data':'', 'message':'Successfully started game.'}
