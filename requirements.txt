@@ -1,0 +1,7 @@
+##### WORK IN PROGRESS; FOR REFERENCE ONLY #####
+python          3.9
+pip            18.1
+psutil          5.8.0
+Flask           2.0.1
+Flask-API       3.0
+Flask-HTTPAuth  4.4.0
