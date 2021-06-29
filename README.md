@@ -1,5 +1,5 @@
 <h1>myControl</h1>
-Rewritten Python 3 compatible version of Picontrol by jetechteam
+<p>Rewritten Picontrol by jetechteam to be compatible with Python 3.7.3 and RetroPie 4.7.1</p>
 
 Original Project(s) Links
 <ul>
@@ -9,7 +9,7 @@ Original Project(s) Links
 
 <h2>WIP</h2>
 <ul>
-  <li>Add load from NFC feature</li>
+  <li>Add load from NFC feature, testing</li>
   <li>Remove code related to platforms other than Raspberry Pi</li>
   <li>Review the original button options</li>
   <li>Add webserver</li>
