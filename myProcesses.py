@@ -22,7 +22,7 @@ def killTasks(procnames):
 
 ## Get emulator path
 def getEmulatorPath(console):
-    path = 'opt/retropie/supplementary/runcommand/runcommand.sh 0 _SYS_ ' + console + ' '
+    path = '/opt/retropie/supplementary/runcommand/runcommand.sh 0 _SYS_ ' + console + ' '
     return path
 
 ## Get game path
@@ -101,7 +101,7 @@ def runGame(console, game, source):
                     subprocess.call(getEmulatorPath(console) + getGamePath(console,game), shell=True)
             except:
                 pass
-            os.exit(0)
+            os._exit(0)
         else:
             response = {'type':'success', 'data':'', 'message':'Successfully started game.'}
             print ('Success, game started!')
