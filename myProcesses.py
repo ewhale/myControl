@@ -104,7 +104,6 @@ def runGame(console, game, source):
             os._exit(0)
         else:
             response = {'type':'success', 'data':'', 'message':'Successfully started game.'}
-            print ('Success, game started!')
             return response
     except:
         print ('Error, failed to start game.')
