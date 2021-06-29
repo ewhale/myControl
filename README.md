@@ -9,7 +9,6 @@ Original Project(s) Links
 
 <h2>WIP</h2>
 <ul>
-  <li>Add load from NFC feature, testing</li>
   <li>Remove code related to platforms other than Raspberry Pi</li>
   <li>Review the original button options</li>
   <li>Add webserver</li>
