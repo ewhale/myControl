@@ -43,7 +43,7 @@ def processes_exists(proc_name):
         output = ps.stdout.read()
         ps.stdout.close()
         ps.wait()
-        for line in output.split('\n'):
+        for line in output.decode().split('\n'):
             res = re.findall("(\d+) (.*)", line)
             if res:
                 pid = int(res[0][0])
@@ -60,7 +60,7 @@ def process_id(proc_name):
         output = ps.stdout.read()
         ps.stdout.close()
         ps.wait()
-        for line in output.split('\n'):
+        for line in output.decode().split('\n'):
             res = re.findall("(\d+) (.*)", line)
             if res:
                 pid = int(res[0][0])
@@ -74,7 +74,7 @@ def process_id(proc_name):
 def runGame(console, game, source):
     try:
         # Update status
-        f = open('/home/pi/scripts/myControl/myConfigs/status.conf', 'rw+')
+        f = open('/home/pi/scripts/myControl/myConfigs/status.conf', 'w')
         f.seek(0)
         f.truncate()
         f.seek(0)
