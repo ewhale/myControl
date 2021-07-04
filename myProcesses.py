@@ -80,7 +80,7 @@ def runGame(console, game, source):
         f.seek(0)
         f.write(source)
         f.close()
-        emulationstationRunning = processes_exists('emulationstation')
+        emulationstationRunning = process_exists('emulationstation')
 
         procnames = ["retroarch", "ags", "uae4all2", "uae4arm", "capricerpi", "linapple", "hatari", "stella",
                     "atari800", "xroar", "vice", "daphne", "reicast", "pifba", "osmose", "gpsp", "jzintv",
