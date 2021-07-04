@@ -36,7 +36,7 @@ def getGamePath(console, game):
     gamePath = '/home/pi/RetroPie/roms/' + console + '/' + game
     return gamePath
 
-def processes_exists(proc_name):
+def process_exists(proc_name):
     try:
         ps = subprocess.Popen('ps ax -o pid= -o args= ', shell=True, stdout=subprocess.PIPE)
         ps_pid = ps.pid
