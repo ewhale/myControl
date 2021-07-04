@@ -36,7 +36,7 @@ def getGamePath(console, game):
     gamePath = '/home/pi/RetroPie/roms/' + console + '/' + game
     return gamePath
 
-def processes_exists(proc_name):
+def process_exists(proc_name):
     try:
         ps = subprocess.Popen('ps ax -o pid= -o args= ', shell=True, stdout=subprocess.PIPE)
         ps_pid = ps.pid
@@ -80,7 +80,7 @@ def runGame(console, game, source):
         f.seek(0)
         f.write(source)
         f.close()
-        emulationstationRunning = processes_exists('emulationstation')
+        emulationstationRunning = process_exists('emulationstation')
 
         procnames = ["retroarch", "ags", "uae4all2", "uae4arm", "capricerpi", "linapple", "hatari", "stella",
                     "atari800", "xroar", "vice", "daphne", "reicast", "pifba", "osmose", "gpsp", "jzintv",
