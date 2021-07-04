@@ -22,7 +22,7 @@ def killTasks(procnames):
 
 ## Get emulator path
 def getEmulatorPath(console):
-    path = 'opt/retropie/supplementary/runcommand/runcommand.sh 0 _SYS_ ' + console + ' '
+    path = '/opt/retropie/supplementary/runcommand/runcommand.sh 0 _SYS_ ' + console + ' '
     return path
 
 ## Get game path
@@ -43,7 +43,7 @@ def process_exists(proc_name):
         output = ps.stdout.read()
         ps.stdout.close()
         ps.wait()
-        for line in output.split('\n'):
+        for line in output.decode().split('\n'):
             res = re.findall("(\d+) (.*)", line)
             if res:
                 pid = int(res[0][0])
@@ -60,7 +60,7 @@ def process_id(proc_name):
         output = ps.stdout.read()
         ps.stdout.close()
         ps.wait()
-        for line in output.split('\n'):
+        for line in output.decode().split('\n'):
             res = re.findall("(\d+) (.*)", line)
             if res:
                 pid = int(res[0][0])
@@ -74,7 +74,7 @@ def process_id(proc_name):
 def runGame(console, game, source):
     try:
         # Update status
-        f = open('/home/pi/scripts/myControl/myConfigs/status.conf', 'rw+')
+        f = open('/home/pi/scripts/myControl/myConfigs/status.conf', 'w')
         f.seek(0)
         f.truncate()
         f.seek(0)
@@ -101,10 +101,9 @@ def runGame(console, game, source):
                     subprocess.call(getEmulatorPath(console) + getGamePath(console,game), shell=True)
             except:
                 pass
-            os.exit(0)
+            os._exit(0)
         else:
             response = {'type':'success', 'data':'', 'message':'Successfully started game.'}
-            print ('Success, game started!')
             return response
     except:
         print ('Error, failed to start game.')
