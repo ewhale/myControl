@@ -21,6 +21,7 @@ then
     apt-get install -y python3-pip
     pip3 install --upgrade setuptools
     echo "*********** Install NFC Libraries **********"
+    pip3 install RPi.GPIO
     pip3 install Adafruit-GPIO
     pip3 install Adafruit-PN532
     pip3 install psutil
