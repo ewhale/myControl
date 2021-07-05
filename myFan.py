@@ -24,14 +24,14 @@ while True:
     thresholdOn = 60
     thresholdOff = 50
     interval_value = 30
-    
+
     try:
         thresholdOn = int(config.get('fan', 'thresholdon'))
         thresholdOff = int(config.get('fan', 'thresholdoff'))
         interval_value = float(config.get('fan', 'interval'))
     except:
         print ('Unable to access config.conf file')
-        
+
     temp = int(float(getCPUtemp()))
     if temp >= thresholdOn:
         GPIO.output(gpioFan,1)
@@ -39,5 +39,5 @@ while True:
     else:
         if (fan_on == True & temp <= thresholdOff -5):
             GPIO.output(gpioFan,0)
-            
+
     time.sleep(float(interval_value))
