@@ -50,7 +50,7 @@ while True:
         if GPIO.input(Reset) == True:
             timer = 0.0
             # 'Reset' timer loop; reboot or flash NFC
-            while time < 2:
+            while timer < 2:
                 if GPIO.input(Reset):
                     timer += 0.2
                     time.sleep(0.2)
