@@ -4,11 +4,11 @@ from myProcesses import runGame
 
 ## Starts fan control
 os.system('pkill -9 -f myFan.py')
-subprocess.Popen('python /home/pi/scripts/myControl/myFan.py&', shell=True)
+subprocess.Popen('python3 /home/pi/scripts/myControl/myFan.py&', shell=True)
 
 ## Starts button control
 os.system('pkill -9 -f myButtons.py')
-subprocess.Popen('python /home/pi/scripts/myControl/myButtons.py&', shell=True)
+subprocess.Popen('python3 /home/pi/scripts/myControl/myButtons.py&', shell=True)
 
 ## Check for NFC tag and boot if present
 response = read()
