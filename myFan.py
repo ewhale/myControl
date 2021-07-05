@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 
 gpioFan = 18
 
-GPIO.setwarning(False)
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(gpioFan, GPIO.OUT)
 
